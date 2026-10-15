@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""OpenWebUI → OpenAI 兼容中转网关（自写 FastAPI）。"""
+"""OpenWebUI → OpenAI 兼容中转网关（自写 FastAPI）。
+
+免责声明：
+  本代码由 AI 编码（AI Coding）辅助生成，仅供个人学习与技术研究，
+  不保证稳定性与安全性，使用风险自负。请勿用于商业用途或未授权访问。
+  详见 DISCLAIMER.md。
+"""
 import os
 import time
 import asyncio
