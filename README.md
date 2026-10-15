@@ -8,6 +8,25 @@
 
 ## 快速开始
 
+### 方式一：Docker 部署（推荐）
+
+```bash
+# 1. 准备配置文件
+cp .env.example .env
+# 编辑 .env，填入 OPENWEBUI_URL / OWU_EMAIL / OWU_PASSWORD / PROXY_KEYS
+
+# 2. 构建并启动
+docker compose up -d --build
+
+# 3. 查看日志 / 状态
+docker compose logs -f
+docker compose ps
+```
+
+容器对外暴露 `18000` 端口，通过 `env_file` 自动读取 `.env` 配置，`restart: unless-stopped` 保证开机自启，并内置健康检查（每 30s 探测 `/healthz`）。
+
+### 方式二：直接运行（本地开发）
+
 ```bash
 # 1. 安装依赖
 pip install -r requirements.txt

@@ -1,0 +1,24 @@
+services:
+  owu-proxy:
+    build: .
+    image: owu-proxy:latest
+    container_name: owu-proxy
+    restart: unless-stopped
+    ports:
+      - "18000:18000"
+    env_file:
+      - .env
+    # 若不用 .env 文件，也可直接在此列出环境变量：
+    # environment:
+    #   OPENWEBUI_URL: https://chatgpt.xcreditech.com
+    #   OWU_EMAIL: you@example.com
+    #   OWU_PASSWORD: your-password
+    #   PROXY_KEYS: sk-proxy-abc123
+    #   REFRESH_AHEAD: "3600"
+    #   PORT: "18000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18000/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
